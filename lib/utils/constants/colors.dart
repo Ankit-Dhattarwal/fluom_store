@@ -11,15 +11,15 @@ class TColors {
  static const Color secondary = Color(0xFFFFE24B);
  static const Color accent = Color(0xFFb0c7ff);
 
- // Gradient Colors
-  static const Gradient linerGradient = LinearGradient(
-    begin: Alignment(0.0, 0.0),
-    end: Alignment(0.707, -0.707),
-    colors: [
-      Color(0xffff9a9e),
-      Color(0xfffad0c4),
-      Color(0xfffad0c4),
-  ]);
+ // // Gradient Colors
+ //  static const Gradient linerGradient = LinearGradient(
+ //    begin: Alignment(0.0, 0.0),
+ //    end: Alignment(0.707, -0.707),
+ //    colors: [
+ //      Color(0xffff9a9e),
+ //      Color(0xfffad0c4),
+ //      Color(0xfffad0c4),
+ //  ]);
 
  // Text Colors
  static const Color textPrimary = Color(0xFF333333);

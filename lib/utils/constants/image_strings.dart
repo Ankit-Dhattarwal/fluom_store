@@ -11,6 +11,10 @@ class TImages {
   static const String google = "";
   static const String facebook = "";
 
+  // onBoarding Images
+  static const String onBoardingImage1 = "assets/images/on_boarding_images/i.png";
+  static const String onBoardingImage2 = "assets/images/on_boarding_images/ii.png";
+  static const String onBoardingImage3 = "assets/images/on_boarding_images/iii.png";
 
 
 }

@@ -20,6 +20,9 @@ dependencies:
   intl: ^0.19.0
   logger: ^2.0.2+1
   url_launcher: ^6.2.2
+  smooth_page_indicator: ^1.1.0
+
+
 # Icons
   cupertino_icons: ^1.0.6
   iconsax: ^0.0.8
@@ -32,7 +35,9 @@ dependencies:
   get_storage: ^2.1.1
 
 
+
 # Product Specific
+  flutter_native_splash: ^2.3.7
 
 
 
@@ -55,8 +60,10 @@ flutter:
 #---------------------- LOCAL ASSETS ----------------------#
   assets:
     - assets/logos/
+    - assets/logos/logo__white_f_removebg.png
+    - assets/logos/black_f_removebg.png
     - assets/icons/
-    - assets/images/
+    - assets/images/on_boarding_images/
 
 
 #---------------------- LOCAL FONTS ----------------------#
