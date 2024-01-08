@@ -60,10 +60,10 @@ flutter:
 #---------------------- LOCAL ASSETS ----------------------#
   assets:
     - assets/logos/
-    - assets/logos/logo__white_f_removebg.png
-    - assets/logos/black_f_removebg.png
     - assets/icons/
     - assets/images/on_boarding_images/
+    - assets/images/login_screen_images/
+    - assets/images/email_verification/
 
 
-#---------------------- LOCAL FONTS ----------------------#
+    #---------------------- LOCAL FONTS ----------------------#
