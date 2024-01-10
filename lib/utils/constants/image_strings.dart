@@ -20,6 +20,18 @@ class TImages {
   static const String sendEmail = "assets/images/email_verification/email_send.png";
   static const String sendEmailSuccessful = "assets/images/email_verification/email_send_successfully.jpeg";
 
+  // --Animation
+
+  static const String productIllustration = "";
+  static const String productSaleIllustration = "";
+  static const String staticSuccessIllustration = "";
+  static const String deliveredInPlaneIllustration = "";
+  static const String verifyIllustration = "";
+
+
+
+
+
 
 
 }

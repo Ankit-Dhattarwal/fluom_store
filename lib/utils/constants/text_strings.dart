@@ -6,6 +6,16 @@ class TTexts {
   // -- Global Texts
   static const String and = "and";
   static const String continues = "Continue";
+  static const String submit = "Submit";
+  static const String done = "Done";
+  static const String skip = "Skip";
+  static const String dones = "Done";
+  static const String appName = "Fluom";
+
+
+
+
+
 
 
 
@@ -18,10 +28,6 @@ class TTexts {
   static const String onBoardingSubTitle2 = "For Seamless Transactions, Choose Your Payment Path - Your Convenience, Our Priority!";
   static const String onBoardingSubTitle3 = "From Our Doorstep to Your - Swift, Secure and Contactless Delivery!";
 
-
-  // -- Home
-  static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "Ankit Dhattarwal";
 
   // Authentication Form Text
   static const String firstName = "First Name";
@@ -57,6 +63,10 @@ class TTexts {
   static const String emailNotReceivedMessage = "Didn't get the email? Check your junk/spam or resend it.";
   static const String yourAccountCreatedTitle = "Your account successfully created";
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
+
+// --Home
+  static const String homeAppbarTitle = "Good day for shopping";
+  static const String homeAppbarSubTitle = "Ankit Dhattarwal";
 
 
 

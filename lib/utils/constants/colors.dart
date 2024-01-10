@@ -7,7 +7,7 @@ class TColors {
  TColors._();
 
  // App Basic Colors
- static const Color primary = Color(0xFF4B68ff);
+ static const Color primary = Color(0xFF4b68ff);
  static const Color secondary = Color(0xFFFFE24B);
  static const Color accent = Color(0xFFb0c7ff);
 
@@ -32,8 +32,8 @@ class TColors {
  static const Color primaryBackground = Color(0xFFF3F5FF);
 
  // Background Container Colors
- static const Color lightContianer = Color(0xFFF6F6F6);
- static Color darkContianer = TColors.white.withOpacity(0.1);
+ static const Color lightContainer = Color(0xFFF6F6F6);
+ static Color darkContainer = TColors.white.withOpacity(0.1);
 
  // Button Colors
   static const Color buttonPrimary = Color(0xFF4b68ff);
