@@ -38,6 +38,7 @@ dependencies:
 
 # Product Specific
   flutter_native_splash: ^2.3.7
+  carousel_slider: ^4.2.1
 
 
 
@@ -64,6 +65,9 @@ flutter:
     - assets/images/on_boarding_images/
     - assets/images/login_screen_images/
     - assets/images/email_verification/
+    - assets/images/banners/
+    - assets/images/products/
+    - assets/images/store_icons/
 
 
     #---------------------- LOCAL FONTS ----------------------#

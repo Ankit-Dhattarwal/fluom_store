@@ -28,6 +28,34 @@ class TImages {
   static const String deliveredInPlaneIllustration = "";
   static const String verifyIllustration = "";
 
+  //-- Categories Icons
+
+  static const String sportsIcon = "";
+  static const String clothIcon = "assets/images/store_icons/cloth_icon.png";
+  static const String shoeIcon = "";
+  static const String cosmeticsIcon = "";
+  static const String animalIcon = "";
+  static const String toyIcon = "";
+  static const String furnitureIcon = "";
+  static const String jeweleryIcon = "";
+  static const String electronicIcon = "";
+
+  // --Banner
+  static const String promoBanner1 = "assets/images/banners/sport-shoes-sale-banner.png";
+  static const String promoBanner2 = "assets/images/banners/nike-shoes-facebook.jpg";
+  static const String promoBanner3 = "assets/images/banners/sneakers_images_banners.jpg";
+
+  // Products
+  static const String productImage1 = "assets/images/products/nike_shoes2-removebg.png";
+
+
+
+
+
+
+
+
+
 
 
 
