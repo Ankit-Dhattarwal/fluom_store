@@ -9,11 +9,11 @@ class RoundedContainer extends StatelessWidget {
     this.child,
     this.width,
     this.height,
+    this.margin,
     this.padding,
+    this.showBorder = false,
     this.radius = TSizes.cardRadiusLg,
     this.backgroundColor = TColors.whites,
-    this.margin,
-    this.showBorder = false,
     this.borderColor = TColors.borderPrimary,
   });
 
@@ -38,6 +38,7 @@ class RoundedContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
         color: backgroundColor,
+        border: showBorder ? Border.all(color: borderColor) : null,
       ),
       child: child,
     );

@@ -17,7 +17,7 @@ class HomeCategories extends StatelessWidget {
           itemCount: 6,
           scrollDirection: Axis.horizontal,
           itemBuilder: (_, index) {
-            return  VerticalImageText(image: TImages.google, title: 'shoes', onTap: (){},);
+            return  VerticalImageText(image: TImages.chappelIcons, title: 'shoes', onTap: (){},);
           }),
     );
   }

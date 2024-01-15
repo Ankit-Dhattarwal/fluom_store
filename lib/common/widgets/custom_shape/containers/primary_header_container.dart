@@ -14,20 +14,17 @@ class PrimaryHeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurvedEdgeWidget(
-      child: SizedBox(
-        height: 400,
-        child: Container(
-          color: TColors.primary,
+      child: Container(
+        color: TColors.primary,
 
-          /// --If [ size.isFinite': is not true.in Stack] error occurred.
-          child: Stack(
-            children: [
-              ///--Background Custom Shapes
-              Positioned(top: -150, right: -250, child: CircularContainer(backgroundColor: TColors.textWhite.withOpacity(0.1),)),
-              Positioned(top: 100, right: -300, child: CircularContainer(backgroundColor: TColors.textWhite.withOpacity(0.1),)),
-              child,
-            ],
-          ),
+        /// --If [ size.isFinite': is not true.in Stack] error occurred.
+        child: Stack(
+          children: [
+            ///--Background Custom Shapes
+            Positioned(top: -150, right: -250, child: CircularContainer(backgroundColor: TColors.textWhite.withOpacity(0.1),)),
+            Positioned(top: 100, right: -300, child: CircularContainer(backgroundColor: TColors.textWhite.withOpacity(0.1),)),
+            child,
+          ],
         ),
       ),
     );

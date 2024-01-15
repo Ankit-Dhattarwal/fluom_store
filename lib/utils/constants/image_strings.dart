@@ -20,8 +20,10 @@ class TImages {
   static const String sendEmail = "assets/images/email_verification/email_send.png";
   static const String sendEmailSuccessful = "assets/images/email_verification/email_send_successfully.jpeg";
 
-  // --Animation
+  //-- User Profile temp
+  static const String userProfileTemp = "assets/images/profile/user_temp.png";
 
+  // --Animation
   static const String productIllustration = "";
   static const String productSaleIllustration = "";
   static const String staticSuccessIllustration = "";
@@ -47,6 +49,12 @@ class TImages {
 
   // Products
   static const String productImage1 = "assets/images/products/nike_shoes2-removebg.png";
+  static const String productImageNikeJacket = "assets/images/store_icons/nike_jacket.png";
+
+  //--Home VerticalSlide Icons
+  static const String chappelIcons = "assets/images/store_icons/vertical_icons_home/chappal_icons.png";
+
+
 
 
 

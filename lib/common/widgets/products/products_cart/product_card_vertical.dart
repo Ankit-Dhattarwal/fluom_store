@@ -10,6 +10,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../Icons/circular_icons.dart';
+import '../../texts/brand_title_text_verified_icon.dart';
 import '../../texts/product_title_text.dart';
 import '../product_price/product_price_text.dart';
 
@@ -27,6 +28,7 @@ class ProductCardVertical extends StatelessWidget {
         width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
+          border: Border.all(color: TColors.darkGrey),
           boxShadow: [ShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(TSizes.productImagesRadius),
           color: dark ? TColors.darkerGrey : TColors.whites,
@@ -37,7 +39,7 @@ class ProductCardVertical extends StatelessWidget {
             RoundedContainer(
               height: 180,
               padding: const EdgeInsets.all(TSizes.sm),
-              backgroundColor: dark ? TColors.black : TColors.light,
+              backgroundColor: dark ? TColors.dark : TColors.light,
               child: Stack(
                 children: [
                   /// Thumnail Images
@@ -78,22 +80,19 @@ class ProductCardVertical extends StatelessWidget {
 
             const SizedBox(height: TSizes.spaceBtwItems / 2,),
             /// --Details
-              Padding(
+              const Padding(
               padding:  EdgeInsets.only(left: TSizes.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ProductTitleText(title: 'Green Nike Air Shoes',smallSize: true,),
-                   const SizedBox(height: TSizes.spaceBtwItems / 2,),
-                  Row(
-                    children: [
-                      Text('Nike', overflow: TextOverflow.ellipsis, maxLines: 1, style: Theme.of(context).textTheme.labelMedium,),
-                      const SizedBox(width: TSizes.xs,),
-                      const Icon(Iconsax.verify5, color: TColors.primary, size: TSizes.iconsXs,)
-                    ],
-                  ),
-                 // Add Spacer() here to keep the height of each box same in case 1 or case 2 lines of heading
-                ],
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ProductTitleText(title: 'Green Nike Air Shoes',smallSize: true,),
+                     SizedBox(height: TSizes.spaceBtwItems / 2,),
+                    BrandTitleWithVerifiedIcon(title: 'Nike',),
+                   // Add Spacer() here to keep the height of each box same in case 1 or case 2 lines of heading
+                  ],
+                ),
               ),
             ),
 
@@ -104,7 +103,7 @@ class ProductCardVertical extends StatelessWidget {
               children: [
                 ///Price
                 const Padding(
-                  padding: EdgeInsets.only(left: TSizes.sm),
+                  padding: EdgeInsets.only(left: TSizes.sm ),
                   child:  ProductPriceText(price: '35.0',),
                 ),
                 Container(

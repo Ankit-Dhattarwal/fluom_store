@@ -68,6 +68,8 @@ flutter:
     - assets/images/banners/
     - assets/images/products/
     - assets/images/store_icons/
+    - assets/images/store_icons/vertical_icons_home/
+    - assets/images/profile/
 
 
     #---------------------- LOCAL FONTS ----------------------#

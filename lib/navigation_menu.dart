@@ -1,3 +1,4 @@
+import 'package:fluom/features/personalization/screens/settings/settings.dart';
 import 'package:fluom/features/shop/screens/home/widgets/home.dart';
 import 'package:fluom/features/shop/screens/store/store.dart';
 import 'package:fluom/utils/constants/colors.dart';
@@ -5,6 +6,8 @@ import 'package:fluom/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'features/shop/screens/wishlist/wishlist.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -46,5 +49,5 @@ class NavigationController  extends GetxController{
 
    final Rx<int> selectedIndex = 0.obs;
 
-   final screens = [ const HomeScreen(), const StoreScreen(), Container(color: Colors.orange), Container(color: Colors.blue)];
+   final screens = [ const HomeScreen(), const StoreScreen(), const FavouriteScreen(), const SettingScreen()];
 }
