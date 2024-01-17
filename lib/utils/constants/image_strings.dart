@@ -42,6 +42,12 @@ class TImages {
   static const String jeweleryIcon = "";
   static const String electronicIcon = "";
 
+  //--Nike Logo original
+  static const String nikeLogoOrg = "assets/images/products/nike_orginal_logo.png";
+
+  //-- Reviews image logo
+  static const String userProfileReview1 = "assets/images/rating_reviews/ankit_fluom_profile.png";
+
   // --Banner
   static const String promoBanner1 = "assets/images/banners/sport-shoes-sale-banner.png";
   static const String promoBanner2 = "assets/images/banners/nike-shoes-facebook.jpg";

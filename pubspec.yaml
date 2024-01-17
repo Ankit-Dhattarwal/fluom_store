@@ -21,6 +21,7 @@ dependencies:
   logger: ^2.0.2+1
   url_launcher: ^6.2.2
   smooth_page_indicator: ^1.1.0
+  flutter_native_splash: ^2.3.7
 
 
 # Icons
@@ -37,8 +38,10 @@ dependencies:
 
 
 # Product Specific
-  flutter_native_splash: ^2.3.7
+
   carousel_slider: ^4.2.1
+  readmore: ^2.2.0
+  flutter_rating_bar: ^4.0.1
 
 
 
@@ -70,6 +73,7 @@ flutter:
     - assets/images/store_icons/
     - assets/images/store_icons/vertical_icons_home/
     - assets/images/profile/
+    - assets/images/rating_reviews/
 
 
     #---------------------- LOCAL FONTS ----------------------#

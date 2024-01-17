@@ -2,9 +2,11 @@ import 'package:fluom/common/styles/shadows.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/circular_container.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/roundedConatiner.dart';
 import 'package:fluom/common/widgets/images/rounded_images.dart';
+import 'package:fluom/features/personalization/screens/product_details/product_details.dart';
 import 'package:fluom/utils/constants/colors.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/image_strings.dart';
@@ -23,7 +25,7 @@ class ProductCardVertical extends StatelessWidget {
 
     /// Container with side padding , color , edge and radius and shadow
     return GestureDetector(
-      onTap: (){},
+      onTap: () => Get.to(() => const ProductDetails()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
