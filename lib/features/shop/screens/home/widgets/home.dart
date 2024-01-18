@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/circular_container.dart';
 import 'package:fluom/common/widgets/products/products_cart/product_card_vertical.dart';
+import 'package:fluom/features/personalization/screens/all_products/all_products.dart';
 import 'package:fluom/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:fluom/utils/constants/sizes.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/widgets/custom_shape/containers/primary_header_container.dart';
 import '../../../../../common/widgets/custom_shape/containers/search_container.dart';
@@ -87,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   /// -- Heading
-                   SectionHeading(title: 'Popular Products', onPressed: (){},),
+                   SectionHeading(title: 'Popular Products', onPressed: () => Get.to(() => const AllProducts()),),
                   const SizedBox(height: TSizes.spaceBtwItems,),
 
                   /// Popular Products

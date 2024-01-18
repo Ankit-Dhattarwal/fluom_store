@@ -2,6 +2,8 @@ import 'package:fluom/common/widgets/appbar/appbar.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/primary_header_container.dart';
 import 'package:fluom/common/widgets/list_Tile/settings_menu_tile.dart';
 import 'package:fluom/common/widgets/texts/section_heading.dart';
+import 'package:fluom/features/personalization/screens/address/address.dart';
+import 'package:fluom/features/personalization/screens/order/order.dart';
 import 'package:fluom/features/personalization/screens/profile/profile.dart';
 import 'package:fluom/utils/constants/colors.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
@@ -61,13 +63,13 @@ class SettingScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'My Address',
                     subTitle: 'Set shopping delivery address',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subTitle: 'Add, remove products and move to checkout',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.bag_tick,

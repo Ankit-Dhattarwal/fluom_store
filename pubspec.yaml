@@ -74,6 +74,7 @@ flutter:
     - assets/images/store_icons/vertical_icons_home/
     - assets/images/profile/
     - assets/images/rating_reviews/
+    - assets/images/payment_method/
 
 
     #---------------------- LOCAL FONTS ----------------------#

@@ -21,13 +21,16 @@ class BrandCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunction.isDarkMode(context);
     return GestureDetector(
       onTap: onTap,
+      /// Container design
       child: RoundedContainer(
         padding: const EdgeInsets.all(TSizes.sm),
-        showBorder: false,
+        showBorder: showBorder,
         backgroundColor: Colors.transparent,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             /// --Icon
             Flexible(
@@ -35,7 +38,7 @@ class BrandCard extends StatelessWidget {
                 isNetworkImage: false,
                 image: TImages.clothIcon,
                 backgroundColor: Colors.transparent,
-                overlayColor: THelperFunction.isDarkMode(context) ? TColors.whites : TColors.black,
+                overlayColor: dark ? TColors.whites : TColors.black,
               ),
             ),
             const SizedBox(
@@ -43,6 +46,9 @@ class BrandCard extends StatelessWidget {
             ),
 
             /// --Text
+            // [Expanded] & Column [MainAxisSize.min] is important to keep the element
+            // in the vertical center also to keep text inside the boundaries
+
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,

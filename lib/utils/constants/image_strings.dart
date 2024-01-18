@@ -31,7 +31,6 @@ class TImages {
   static const String verifyIllustration = "";
 
   //-- Categories Icons
-
   static const String sportsIcon = "";
   static const String clothIcon = "assets/images/store_icons/cloth_icon.png";
   static const String shoeIcon = "";
@@ -41,6 +40,10 @@ class TImages {
   static const String furnitureIcon = "";
   static const String jeweleryIcon = "";
   static const String electronicIcon = "";
+
+  //-- Payment Method
+  static const String paypalMethod = "assets/images/payment_method/paypal.png";
+  static const String successPayment = "assets/images/payment_method/success_payment.gif";
 
   //--Nike Logo original
   static const String nikeLogoOrg = "assets/images/products/nike_orginal_logo.png";

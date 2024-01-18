@@ -1,22 +1,17 @@
 import 'package:fluom/common/widgets/appbar/appbar.dart';
 import 'package:fluom/common/widgets/appbar/tapbar.dart';
-import 'package:fluom/common/widgets/custom_shape/containers/roundedConatiner.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/search_container.dart';
 import 'package:fluom/common/widgets/layout/grid_layout.dart';
-import 'package:fluom/common/widgets/products/products_cart/cart_menu_icons.dart';
 import 'package:fluom/common/widgets/texts/section_heading.dart';
 import 'package:fluom/features/shop/screens/store/widgets/categories_tabs.dart';
 import 'package:fluom/utils/constants/colors.dart';
-import 'package:fluom/utils/constants/enums.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../common/brand/brands_cards.dart';
-import '../../../../common/widgets/images/circular_images.dart';
-import '../../../../common/widgets/texts/brand_title_text_verified_icon.dart';
-import '../../../../utils/constants/image_strings.dart';
+import '../../../../common/widgets/products/carts/widgets/cart_menu_icons.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../personalization/screens/Brands/all_brands.dart';
 import 'brand_card.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -74,13 +69,13 @@ class StoreScreen extends StatelessWidget {
                       /// --Featured Brands
                       SectionHeading(
                         title: 'Featured Brands',
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrandsScreen()),
                       ),
                       const SizedBox(
                         height: TSizes.spaceBtwItems / 1.5,
                       ),
                       GridLayout(itemCount: 4, mainAxisExtent: 80, itemBuilder: (_, index) {
-                        return const BrandCard(showBorder: false,);
+                        return const BrandCard(showBorder: true,);
                       }),
                     ],
                   ),

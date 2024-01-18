@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class TSizes {
   // Padding and margin sizes
@@ -44,7 +43,7 @@ class TSizes {
   // Divider height
   static const double dividerHeight = 1.0;
 
-  // Product item dimenstions
+  // Product item dimensions
   static const double productImagesSize = 120.0;
   static const double productImagesRadius = 16.0;
   static const double productItemHeight = 160.0;
@@ -66,7 +65,7 @@ class TSizes {
   // Loading indicator  size
   static const double loadingIndicatorSize = 36.0;
 
-  // Grid view spcaing
+  // Grid view spacing
   static const double gridViewSpacing = 16.0;
 
 }
