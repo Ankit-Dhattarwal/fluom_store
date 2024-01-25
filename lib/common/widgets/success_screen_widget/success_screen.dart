@@ -1,5 +1,6 @@
 import 'package:fluom/common/styles/spacing/spacing_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
@@ -18,9 +19,11 @@ class SuccessScreen extends StatelessWidget {
         child: Padding(
           padding: TSpacingStyle.paddingWithAppBarHeight * 2,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               /// Image
-              Image(image: AssetImage(image), width: THelperFunction.screenWidth() * 0.6),
+             // Lottie.asset(image, width: MediaQuery.of(context).size.width * 0.8),
+             Image(image: AssetImage(image), width: THelperFunction.screenWidth() * 0.6),
               const SizedBox(height: TSizes.spaceBtmSections),
 
               /// Title & SubTitle

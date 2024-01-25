@@ -1,3 +1,4 @@
+import 'package:fluom/features/personalization/controllers/user_controller.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -17,7 +18,8 @@ class UserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // final dark = THelperFunction.isDarkMode(context);
+    final controller = UserController.instance;
+
     return ListTile(
       leading: const CircularImage(
         image: TImages.userProfileTemp,
@@ -25,8 +27,8 @@ class UserProfileTile extends StatelessWidget {
         height: 50,
         padding: 0,
       ),
-      title: Text('Ankit Dhattarwal', style: Theme.of(context).textTheme.headlineSmall!.apply(color: TColors.whites)),
-      subtitle: Text('ankitdhatterwal09@gmail.com', style: Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.whites)),
+      title: Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall!.apply(color: TColors.whites)),
+      subtitle: Text(controller.user.value.email, style: Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.whites)),
       trailing: IconButton(onPressed: onPressed, icon:  const Icon(Iconsax.edit, color:  TColors.whites)),
     );
   }

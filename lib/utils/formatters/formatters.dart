@@ -15,7 +15,7 @@ class TFormatter{
     // Assuming a 10 digit Indian Phone Number format: 70152-16280
     if(phoneNumber.length == 10){
       return '(${phoneNumber.substring(0, 3)}) ${phoneNumber.substring(3, 6)} ${phoneNumber.substring(6)}';
-    }else if(phoneNumber == 11){
+    }else if(phoneNumber.length == 11){
       return '(${phoneNumber.substring(0,4)}) ${phoneNumber.substring(4, 7)} ${phoneNumber.substring(7)}';
     }
     // add more custom phone number formatting logic for different format is needed.

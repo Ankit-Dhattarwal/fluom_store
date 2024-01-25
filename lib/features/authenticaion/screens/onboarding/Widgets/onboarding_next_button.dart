@@ -6,7 +6,7 @@ import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/devices/device_utility.dart';
 import '../../../../../utils/helpers/helper_function.dart';
-import '../../../controllers/onboarding_controllers.dart';
+import '../../../controllers/onboarding/onboarding_controllers.dart';
 
 class OnBoardingNextButton extends StatelessWidget {
   const OnBoardingNextButton({

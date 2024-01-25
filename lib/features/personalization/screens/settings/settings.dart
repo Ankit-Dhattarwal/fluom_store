@@ -2,11 +2,11 @@ import 'package:fluom/common/widgets/appbar/appbar.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/primary_header_container.dart';
 import 'package:fluom/common/widgets/list_Tile/settings_menu_tile.dart';
 import 'package:fluom/common/widgets/texts/section_heading.dart';
+import 'package:fluom/features/authenticaion/screens/login/login.dart';
 import 'package:fluom/features/personalization/screens/address/address.dart';
 import 'package:fluom/features/personalization/screens/order/order.dart';
 import 'package:fluom/features/personalization/screens/profile/profile.dart';
 import 'package:fluom/utils/constants/colors.dart';
-import 'package:fluom/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -19,7 +19,6 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
- //   final dark = THelperFunction.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -143,11 +142,11 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () => Get.to(const LoginScreen()),
                       style: ButtonStyle(
                         side: MaterialStateProperty.resolveWith<BorderSide>(
                           (Set<MaterialState> states) {
-                            return BorderSide(
+                            return const BorderSide(
                                 color: Colors
                                     .grey);
                           },

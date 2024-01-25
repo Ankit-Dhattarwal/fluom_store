@@ -23,6 +23,11 @@ class TImages {
   //-- User Profile temp
   static const String userProfileTemp = "assets/images/profile/user_temp.png";
 
+  // Lottie animation
+  static const String emailSendSuccessfullyAnimation = "assets/animations/120978-payment-successful.json";
+  static const String loadingAnimation = "assets/animations/141594-animation-of-docer.json";
+
+
   // --Animation
   static const String productIllustration = "";
   static const String productSaleIllustration = "";

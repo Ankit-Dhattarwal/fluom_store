@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../controllers/onboarding_controllers.dart';
+import '../../controllers/onboarding/onboarding_controllers.dart';
 import 'Widgets/onboarding_dot_navigation.dart';
 import 'Widgets/onboarding_next_button.dart';
 import 'Widgets/onboarding_pages.dart';

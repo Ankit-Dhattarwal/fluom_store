@@ -1,6 +1,6 @@
 
 
-import 'package:fluom/features/authenticaion/controllers/onboarding_controllers.dart';
+import 'package:fluom/features/authenticaion/controllers/onboarding/onboarding_controllers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

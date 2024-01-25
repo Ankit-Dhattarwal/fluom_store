@@ -1,6 +1,8 @@
 import 'package:fluom/features/authenticaion/screens/login/login.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class  OnBoardingController extends GetxController{
   static OnBoardingController get instance => Get.find(); // Here this instance calling by Get.find();
@@ -23,7 +25,21 @@ class  OnBoardingController extends GetxController{
   /// Update Current Index & Jump to next page
    void nextPage() {
     if(currentPageIndex == 2){
-     // Get.to(LoginScreen());
+
+     final storage = GetStorage();
+
+     if(kDebugMode){
+      print('====================== GET STORAGE NEXT BUTTON =====================');
+      print(storage.read('IsFirstTime'));
+     }
+
+     storage.write('IsFirstTime', false);
+
+     if(kDebugMode){
+      print('====================== GET STORAGE NEXT BUTTON 2 =====================');
+      print(storage.read('IsFirstTime'));
+     }
+
      Get.offAll(const LoginScreen());
     }else{
         int page = currentPageIndex.value + 1;

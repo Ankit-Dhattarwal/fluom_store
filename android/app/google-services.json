@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "652403237117",
+    "project_id": "fluom-s-store",
+    "storage_bucket": "fluom-s-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652403237117:android:4adf6eaab9534da7ef9e94",
+        "android_client_info": {
+          "package_name": "com.example.fluom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652403237117-bf34gevb5usdra5q06irt2a29s5ssfqu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fluom",
+            "certificate_hash": "71070f4c174d907021018b1e9a27490fa529c6d9"
+          }
+        },
+        {
+          "client_id": "652403237117-p2hqdhleokuj13hilppi01q5ku152832.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKo6xINglNWSC583PCf-AWZbbuU__LuMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652403237117-p2hqdhleokuj13hilppi01q5ku152832.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "652403237117-kl8iq8ph9ifdnu7a6benovtgrra51595.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fluom.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
