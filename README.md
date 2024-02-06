@@ -39,6 +39,7 @@ In case users forget their passwords, a password reset feature is provided. User
 
 Here are some screenshots of the Fluom app:
 
-- ![Fetch Data]([https://example.com/screenshot.png](https://github.com/Ankit-Dhattarwal/fluom_store/assets/109728587/0a51d537-3f7a-4d9b-a8c1-bb2f4c96a903))
+- ![Fetch Data]([<img width="1440" alt="Screenshot 2024-02-07 at 2 39 54 AM" src="https://github.com/Ankit-Dhattarwal/fluom_store/assets/109728587/31f87bc5-2a70-4697-a084-3e97709c529b">]
+)
 
 For more information on GetX and shared preferences, refer to the [online documentation](https://docs.getx.dev/) and [shared_preferences package](https://pub.dev/packages/shared_preferences), respectively.
