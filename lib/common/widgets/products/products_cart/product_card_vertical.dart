@@ -1,7 +1,5 @@
 import 'package:fluom/common/styles/shadows.dart';
-import 'package:fluom/common/widgets/custom_shape/containers/circular_container.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/roundedConatiner.dart';
-import 'package:fluom/common/widgets/images/rounded_images.dart';
 import 'package:fluom/features/personalization/screens/product_details/product_details.dart';
 import 'package:fluom/utils/constants/colors.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
@@ -9,20 +7,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../utils/constants/image_strings.dart';
+import '../../../../data/repositories/categories/category_controller.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../Icons/circular_icons.dart';
+import '../../images/rounded_image_only_Network.dart';
 import '../../texts/brand_title_text_verified_icon.dart';
 import '../../texts/product_title_text.dart';
 import '../product_price/product_price_text.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key});
+   ProductCardVertical({super.key, required this.index});
+
+   final int index;
+
+  var categoryController = Get.put(CategoryController());
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
-
     /// Container with side padding , color , edge and radius and shadow
     return GestureDetector(
       onTap: () => Get.to(() => const ProductDetails()),
@@ -45,9 +47,15 @@ class ProductCardVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   /// Thumnail Images
-                  const RounderImage(
-                    imageUrl: TImages.productImage1,
-                    applyImageRadius: true,
+                  Obx((){
+                    final List<String> images = categoryController.userList[index].image;
+                    final String firstImage = images.isNotEmpty ? images.first : '';
+                   // print('Image URL: $firstImage');
+                    return  RounderImageNetwork(
+                      imageUrl: firstImage,
+                      applyImageRadius: true,
+                    );
+        },
                   ),
 
                   /// -- Sale Tag
@@ -82,16 +90,16 @@ class ProductCardVertical extends StatelessWidget {
 
             const SizedBox(height: TSizes.spaceBtwItems / 2,),
             /// --Details
-              const Padding(
+               Padding(
               padding:  EdgeInsets.only(left: TSizes.sm),
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProductTitleText(title: 'Green Nike Air Shoes',smallSize: true,),
-                     SizedBox(height: TSizes.spaceBtwItems / 2,),
-                    BrandTitleWithVerifiedIcon(title: 'Nike',),
+                    ProductTitleText(title: categoryController.userList[index].title,smallSize: true,),
+                     const SizedBox(height: TSizes.spaceBtwItems / 2,),
+                    const BrandTitleWithVerifiedIcon(title: 'Nike',),
                    // Add Spacer() here to keep the height of each box same in case 1 or case 2 lines of heading
                   ],
                 ),
@@ -104,9 +112,9 @@ class ProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ///Price
-                const Padding(
-                  padding: EdgeInsets.only(left: TSizes.sm ),
-                  child:  ProductPriceText(price: '35.0',),
+                 Padding(
+                  padding: const EdgeInsets.only(left: TSizes.sm ),
+                  child:  ProductPriceText(price: categoryController.userList[index].price,),
                 ),
 
                 /// Add to Carts

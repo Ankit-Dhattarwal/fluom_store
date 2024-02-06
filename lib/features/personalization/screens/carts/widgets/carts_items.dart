@@ -40,7 +40,8 @@ class CartItems extends StatelessWidget {
                   ProductQualityWithAddRemove(),
                 ],
               ),
-              ProductPriceText(price: '250'),
+             ///Here user the api prices
+             // ProductPriceText(price: '250'),
             ],
           ),
         ],

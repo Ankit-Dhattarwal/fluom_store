@@ -1,3 +1,4 @@
+import 'package:fluom/common/widgets/images/circular_images.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -13,11 +14,13 @@ class VerticalImageText extends StatelessWidget {
     this.textColor = TColors.whites,
     this.backgroundColor,
     this.onTap,
+   this.isNetworkImage = true,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -47,7 +50,6 @@ class VerticalImageText extends StatelessWidget {
                 ),
               ),
             ),
-
             /// Text
             const SizedBox(
               height: TSizes.spaceBtwItems / 2,
@@ -68,3 +70,16 @@ class VerticalImageText extends StatelessWidget {
     );
   }
 }
+
+
+/*
+ CircularImage(
+                image: image,
+              fit: BoxFit.fitWidth,
+              padding: TSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backgroundColor,
+              overlayColor: THelperFunction.isDarkMode(context) ? TColors.light : TColors.dark,
+            ),
+
+ */

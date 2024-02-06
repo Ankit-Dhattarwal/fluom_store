@@ -37,7 +37,8 @@ class ProductMetaData extends StatelessWidget {
             /// Prices
             Text('\$255', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
             const SizedBox(width: TSizes.spaceBtwItems,),
-            const ProductPriceText(price: '175', isLarge: true,),
+           /// Herer use the api prices
+           // const ProductPriceText(price: '175', isLarge: true,),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 1.5,),

@@ -59,7 +59,8 @@ class ProductAttributes extends StatelessWidget {
                           ),
 
                           /// Sale Prices
-                          const ProductPriceText(price: '20'),
+                          /// here use the api price
+                      //    const ProductPriceText(price: '20.0'),
                         ],
                       ),
 

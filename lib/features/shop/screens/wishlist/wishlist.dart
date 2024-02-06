@@ -17,7 +17,7 @@ class FavouriteScreen extends StatelessWidget {
       appBar: HomeAppBar(
         title: Text('Wishlist', style: Theme.of(context).textTheme.headlineMedium,),
         actions: [
-          CircularIcon(icon: Iconsax.add, onPressed: () => Get.to(const HomeScreen()),)
+          CircularIcon(icon: Iconsax.add, onPressed: () => Get.to( HomeScreen()),)
         ],
       ),
       body:  SingleChildScrollView(
@@ -25,7 +25,7 @@ class FavouriteScreen extends StatelessWidget {
           padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
-              GridLayout(itemCount: 4, itemBuilder: (_, index) => const ProductCardVertical())
+              GridLayout(itemCount: 4, itemBuilder: (_, index) =>  ProductCardVertical(index: index,))
             ],
           ),
         ),

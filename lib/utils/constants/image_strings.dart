@@ -49,6 +49,12 @@ class TImages {
   //-- Payment Method
   static const String paypalMethod = "assets/images/payment_method/paypal.png";
   static const String successPayment = "assets/images/payment_method/success_payment.gif";
+  static const String mastercard = "assets/TAllimage/icons/payment_methods/master-card.png";
+  static const String googlePay = "assets/TAllimage/icons/payment_methods/google-pay.png";
+  static const String creditCard = "assets/TAllimage/icons/payment_methods/credit-card.png";
+  static const String paytm = "assets/TAllimage/icons/payment_methods/paytm.png";
+
+
 
   //--Nike Logo original
   static const String nikeLogoOrg = "assets/images/products/nike_orginal_logo.png";
@@ -66,10 +72,26 @@ class TImages {
   static const String productImageNikeJacket = "assets/images/store_icons/nike_jacket.png";
 
   //--Home VerticalSlide Icons
-  static const String chappelIcons = "assets/images/store_icons/vertical_icons_home/chappal_icons.png";
+  static const String SliderchappelIcons = "assets/TAllimage/icons/categories/icons8-shoes-64.png";
+  static const String SliderschoolUniform = "assets/TAllimage/icons/categories/icons8-school-uniform-64.png";
+  static const String SlidersportsBowing = "assets/TAllimage/icons/categories/icons8-bowling-64.png";
+  static const String Slidercosmetics = "assets/TAllimage/icons/categories/icons8-cosmetics-64.png";
+  static const String SliderFurnitureDiningChair = "assets/TAllimage/icons/categories/icons8-dining-chair-64.png";
+  static const String SliderdogGHeart = "assets/TAllimage/icons/categories/icons8-dog-heart-64.png";
+  static const String Slidersmartphone = "assets/TAllimage/icons/categories/icons8-smartphone-64.png";
+  static const String SliderSparklingDiamond = "assets/TAllimage/icons/categories/icons8-sparkling-diamond-64.png";
+  static const String Slidertailor = "assets/TAllimage/icons/categories/icons8-tailors-dummy-64.png";
+  static const String SliderToyCar = "assets/TAllimage/icons/categories/icons8-wooden-toy-car-50.png";
 
+// -- Sub Categories
+  static const String SportsShoes = "assets/TAllimage/products/nike-shoes.png";
+  static const String TrackSuits = "assets/TAllimage/products/tracksuit_black.png";
+  static const String yellowTshirt = "assets/TAllimage/products/tshirt_yellow_collar.png";
 
-
+// --Furniture
+  static const String BedroomFurniture = "assets/TAllimage/products/bedroom_bed.png";
+  static const String KitchenDiningTable = "assets/TAllimage/products/kitchen_dining table.png";
+  static const String OfficeTableChair = "assets/TAllimage/products/office_desk_1.png";
 
 
 

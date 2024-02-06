@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
-
 class RounderImage extends StatelessWidget {
   const RounderImage({
     super.key,
@@ -20,7 +19,7 @@ class RounderImage extends StatelessWidget {
     this.borderRadius = TSizes.md,
   });
 
-  final double? width , height;
+  final double? width, height;
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
@@ -45,9 +44,16 @@ class RounderImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(
-          borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
-          child:  Image(
-            image: isNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl) as ImageProvider,
+          borderRadius: applyImageRadius
+              ? BorderRadius.circular(borderRadius)
+              : BorderRadius.zero,
+          child:isNetworkImage
+              ? Image.network(
+            imageUrl,
+            fit: fit,
+          )
+              : Image.asset(
+            imageUrl,
             fit: fit,
           ),
         ),

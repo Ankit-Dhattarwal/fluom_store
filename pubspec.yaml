@@ -20,6 +20,8 @@ dependencies:
   intl: ^0.19.0
   logger: ^2.0.2+1
   url_launcher: ^6.2.2
+  shimmer: ^3.0.0
+  image_picker: ^1.0.7
   smooth_page_indicator: ^1.1.0
   flutter_native_splash: ^2.3.7
   lottie: ^2.7.0
@@ -50,7 +52,8 @@ dependencies:
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
   google_sign_in: ^6.1.6
-  shimmer: ^3.0.0
+  firebase_storage: ^11.6.0
+  cached_network_image: ^3.3.1
 
 
 
@@ -85,6 +88,9 @@ flutter:
     - assets/images/rating_reviews/
     - assets/images/payment_method/
     - assets/animations/
+    - assets/TAllimage/
+    - assets/TAllimage/icons/categories/
+    - assets/TAllimage/banners/
 
 
     #---------------------- LOCAL FONTS ----------------------#

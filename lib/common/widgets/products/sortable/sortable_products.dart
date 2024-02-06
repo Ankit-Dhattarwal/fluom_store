@@ -36,7 +36,7 @@ class SortableProducts extends StatelessWidget {
         ),
         const SizedBox(height: TSizes.spaceBtmSections,),
         /// Products
-        GridLayout(itemCount: 4, itemBuilder: (_, index) => const ProductCardVertical())
+        GridLayout(itemCount: 4, itemBuilder: (_, index) =>  ProductCardVertical(index: index,))
       ],
     );
   }

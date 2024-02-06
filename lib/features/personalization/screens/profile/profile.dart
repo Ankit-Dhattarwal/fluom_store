@@ -1,5 +1,6 @@
 import 'package:fluom/common/widgets/appbar/appbar.dart';
 import 'package:fluom/common/widgets/images/circular_images.dart';
+import 'package:fluom/common/widgets/shimmers/profile_shimmer_loader.dart';
 import 'package:fluom/common/widgets/texts/section_heading.dart';
 import 'package:fluom/features/personalization/controllers/user_controller.dart';
 import 'package:fluom/features/personalization/screens/profile/profile_widgets/change_name.dart';
@@ -7,7 +8,6 @@ import 'package:fluom/features/personalization/screens/profile/profile_widgets/p
 import 'package:fluom/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/sizes.dart';
@@ -35,12 +35,17 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const CircularImage(image: TImages.userProfileTemp, width: 80, height: 80,),
-                    TextButton(onPressed: (){}, child: const Text('Change Profile Picture')),
+                    Obx( (){
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : TImages.userProfileTemp;
+                      return  controller.imageUploading.value
+                        ? const TShimmerEffect(width: 80, height: 80, radius: 80,)
+                        : CircularImage(image: image, width: 80, height: 80, isNetworkImage: networkImage.isNotEmpty);
+                    }),
+                    TextButton(onPressed: () => controller.uploadUserProfilePicture(), child: const Text('Change Profile Picture')),
                   ],
                 ),
               ),
-
               /// Details
               const SizedBox(height: TSizes.spaceBtwItems / 2,),
               const Divider(),

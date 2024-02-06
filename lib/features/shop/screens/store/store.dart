@@ -3,6 +3,7 @@ import 'package:fluom/common/widgets/appbar/tapbar.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/search_container.dart';
 import 'package:fluom/common/widgets/layout/grid_layout.dart';
 import 'package:fluom/common/widgets/texts/section_heading.dart';
+import 'package:fluom/features/shop/controllers/category_controller.dart';
 import 'package:fluom/features/shop/screens/store/widgets/categories_tabs.dart';
 import 'package:fluom/utils/constants/colors.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
@@ -19,8 +20,10 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  //  final categories = CategoryController.instance.featuredCategories;
+
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         appBar: HomeAppBar(
           title: Text(

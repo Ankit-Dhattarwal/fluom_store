@@ -14,13 +14,17 @@ import '../../../../../common/widgets/image_text_widget/vertical_images_text.dar
 import '../../../../../common/widgets/images/rounded_images.dart';
 import '../../../../../common/widgets/layout/grid_layout.dart';
 import '../../../../../common/widgets/texts/section_heading.dart';
+import '../../../../../data/repositories/categories/category_controller.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import 'home_appbar/home_appbar.dart';
 import 'home_categories.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   HomeScreen({super.key});
+
+  var categoryController = Get.put(CategoryController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +69,9 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: TSizes.spaceBtmSections,),
+                  SizedBox(
+                    height: TSizes.spaceBtmSections,
+                  ),
                 ],
               ),
             ),
@@ -89,12 +95,25 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   /// -- Heading
-                   SectionHeading(title: 'Popular Products', onPressed: () => Get.to(() => const AllProducts()),),
-                  const SizedBox(height: TSizes.spaceBtwItems,),
+                  SectionHeading(
+                    title: 'Popular Products',
+                    onPressed: () => Get.to(() => const AllProducts()),
+                  ),
+                  const SizedBox(
+                    height: TSizes.spaceBtwItems,
+                  ),
 
                   /// Popular Products
-               GridLayout(itemCount: 2, itemBuilder: (_, index) => const ProductCardVertical(),),
-
+                  Obx((){
+                    if(categoryController.isLoading.value){
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                      return GridLayout(
+                        itemCount: categoryController.userList.length,
+                        itemBuilder: (_, index) =>  ProductCardVertical(index: index,),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -104,4 +123,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

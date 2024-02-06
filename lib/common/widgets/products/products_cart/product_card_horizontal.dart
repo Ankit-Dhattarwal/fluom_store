@@ -99,7 +99,8 @@ class ProductCartHorizontal extends StatelessWidget {
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
                        /// Pricing
-                       const Flexible(child: ProductPriceText(price: '35.0')),
+                       /// Here use the api prices
+                    //   const Flexible(child: ProductPriceText(price: '35.0')),
 
                        /// Add to Carts
                        Container(

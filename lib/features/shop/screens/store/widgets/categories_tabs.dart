@@ -6,11 +6,13 @@ import '../../../../../common/brand/brands_cards.dart';
 import '../../../../../common/widgets/texts/section_heading.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/category_model.dart';
 
 
 class CategoriesTab extends StatelessWidget {
   const CategoriesTab({super.key});
 
+ // final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return  ListView(
@@ -29,7 +31,7 @@ class CategoriesTab extends StatelessWidget {
               SectionHeading(title: 'You might like', showActionButton: true, onPressed: (){},),
               const SizedBox(height: TSizes.spaceBtwItems,),
 
-              GridLayout(itemCount: 4, itemBuilder: (_, index) => const ProductCardVertical()),
+              GridLayout(itemCount: 4, itemBuilder: (_, index) =>  ProductCardVertical(index: index,)),
               const SizedBox(height: TSizes.spaceBtmSections,),
 
             ],
