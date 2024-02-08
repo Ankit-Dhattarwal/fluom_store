@@ -35,4 +35,10 @@ Users are required to verify their email addresses upon registration. This ensur
 
 In case users forget their passwords, a password reset feature is provided. Users can initiate a password reset process, and instructions will be sent to their registered email addresses.
 
+## Screenshots 📸
+
+Here are some screenshots of the Fluom app:
+
+- ![Fetch Data] <img width="1372" alt="Screenshot 2024-02-07 at 2 39 54 AM" src="https://github.com/Ankit-Dhattarwal/fluom_store/assets/109728587/9cbd01ee-e925-4f31-bdf4-b48ebf4313a5">
+
 For more information on GetX and shared preferences, refer to the [online documentation](https://docs.getx.dev/) and [shared_preferences package](https://pub.dev/packages/shared_preferences), respectively.
