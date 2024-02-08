@@ -19,7 +19,6 @@ class ProductCardVertical extends StatelessWidget {
    ProductCardVertical({super.key, required this.index});
 
    final int index;
-
   var categoryController = Get.put(CategoryController());
 
   @override
@@ -27,7 +26,7 @@ class ProductCardVertical extends StatelessWidget {
     final dark = THelperFunction.isDarkMode(context);
     /// Container with side padding , color , edge and radius and shadow
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetails()),
+      onTap: () => Get.to(() => ProductDetails(imageUrl: categoryController.userList[index].image.first, price: categoryController.userList[index].price, description: categoryController.userList[index].description, rating: categoryController.userList[index].rating.rate, count: categoryController.userList[index].rating.count,)),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -67,7 +66,7 @@ class ProductCardVertical extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: TSizes.sm, vertical: TSizes.xs),
                       child: Text(
-                        '25%',
+                        (categoryController.userList[index].price - categoryController.userList[index].price/3).toInt().toString() + ' %',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!

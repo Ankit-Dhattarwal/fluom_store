@@ -10,7 +10,9 @@ import '../../../../../common/widgets/chips/choice_chips.dart';
 import '../../../../../utils/constants/colors.dart';
 
 class ProductAttributes extends StatelessWidget {
-  const ProductAttributes({super.key});
+  final double price;
+  final String description;
+  const ProductAttributes({super.key, required this.price, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class ProductAttributes extends StatelessWidget {
 
                           /// Actual Prices
                           Text(
-                            '\$25',
+                            (price - price /3).toStringAsFixed(2),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
@@ -83,9 +85,8 @@ class ProductAttributes extends StatelessWidget {
               ),
 
               /// Variation Description
-              const ProductTitleText(
-                title:
-                    'This is the Description of the Product and it can go upto max 4 lines.',
+               ProductTitleText(
+                title: description,
                 smallSize: true,
                 maxLines: 4,
               ),

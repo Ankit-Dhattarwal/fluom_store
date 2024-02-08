@@ -3,7 +3,6 @@ import 'package:fluom/common/widgets/appbar/tapbar.dart';
 import 'package:fluom/common/widgets/custom_shape/containers/search_container.dart';
 import 'package:fluom/common/widgets/layout/grid_layout.dart';
 import 'package:fluom/common/widgets/texts/section_heading.dart';
-import 'package:fluom/features/shop/controllers/category_controller.dart';
 import 'package:fluom/features/shop/screens/store/widgets/categories_tabs.dart';
 import 'package:fluom/utils/constants/colors.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/products/carts/widgets/cart_menu_icons.dart';
+import '../../../../data/repositories/categories/category_controller.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../personalization/screens/Brands/all_brands.dart';
 import 'brand_card.dart';
@@ -20,8 +20,6 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  //  final categories = CategoryController.instance.featuredCategories;
-
     return DefaultTabController(
       length: 6,
       child: Scaffold(
@@ -87,19 +85,20 @@ class StoreScreen extends StatelessWidget {
                 /// --TabBar
                 bottom:  const StoreTabBar(
                   tabs: [
-                    Tab(child: Text('Sports'),),
-                    Tab(child: Text('Furniture'),),
-                    Tab(child: Text('Electronics'),),
-                    Tab(child: Text('Clothes'),),
+                    Tab(child: Text('jewelery'),),
+                    Tab(child: Text("women's clothing"),),
+                    Tab(child: Text("men's clothing"),),
+                    Tab(child: Text('electronics'),),
                     Tab(child: Text('Cosmetics'),),
+                    Tab(child: Text('Sports'),),
                   ],
                 )
               ),
             ];
           },
           /// --Body
-          body:  const TabBarView(
-            children: [CategoriesTab(), CategoriesTab(), CategoriesTab(), CategoriesTab(), CategoriesTab(),
+          body:   TabBarView(
+            children: [CategoriesTab(), CategoriesTab(), CategoriesTab(), CategoriesTab(), CategoriesTab(), CategoriesTab(),
             ],
           ),
         ),

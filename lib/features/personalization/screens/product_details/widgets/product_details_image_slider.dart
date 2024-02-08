@@ -1,3 +1,4 @@
+import 'package:fluom/common/widgets/images/rounded_image_only_Network.dart';
 import 'package:fluom/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -5,15 +6,14 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../../common/widgets/Icons/circular_icons.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/custom_shape/curved_edges/curved_edge_widget.dart';
-import '../../../../../common/widgets/images/rounded_images.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 
 class ProductImageSlider extends StatelessWidget {
+  final String imageUrl;
   const ProductImageSlider({
-    super.key,
+    super.key, required this.imageUrl,
   });
 
 
@@ -26,13 +26,17 @@ class ProductImageSlider extends StatelessWidget {
         child:  Stack(
           children: [
             ///--Main Large Image
-            const SizedBox(
+             SizedBox(
               height: 400,
               child: Padding(
                 padding: EdgeInsets.all(TSizes.productImagesRadius * 2),
                 child: Center(
-                    child: Image(
-                        image: AssetImage(TImages.productImage1))),
+                  child: RounderImageNetwork(
+                    imageUrl: imageUrl,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
+                ),
               ),
             ),
 
@@ -49,10 +53,10 @@ class ProductImageSlider extends StatelessWidget {
                   physics: const AlwaysScrollableScrollPhysics(),
                   separatorBuilder: (_, __) => const SizedBox(width: TSizes.spaceBtwItems,),
                   itemCount: 4,
-                  itemBuilder: (_, index) => RounderImage(
+                  itemBuilder: (_, index) => RounderImageNetwork(
                     width: 80,
                     backgroundColor: dark ? TColors.dark : TColors.whites,
-                    imageUrl: TImages.productImageNikeJacket,
+                    imageUrl: imageUrl,
                     border: Border.all(color: TColors.primary),
                     padding: const EdgeInsets.all(TSizes.sm),
                   ),

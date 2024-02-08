@@ -5,8 +5,10 @@ import '../../../../../utils/constants/sizes.dart';
 
 
 class RatingShare extends StatelessWidget {
+  final double rating;
+  final int count;
   const RatingShare({
-    super.key,
+    super.key, required this.rating, required this.count,
   });
 
   @override
@@ -22,8 +24,8 @@ class RatingShare extends StatelessWidget {
             Text.rich(
               TextSpan(
                   children:[
-                    TextSpan(text: '5.0', style: Theme.of(context).textTheme.bodyLarge),
-                    const TextSpan(text: '(199)'),
+                    TextSpan(text: rating.toString(), style: Theme.of(context).textTheme.bodyLarge),
+                    TextSpan(text: '(' + count.toString()+ ')'),
                   ]
               ),
             ),

@@ -16,11 +16,17 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
+import '../../../../data/repositories/categories/category_controller.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+  final String imageUrl;
+  final double price;
+  final String description;
+  final double rating;
+  final int count;
+  const ProductDetails({super.key, required this.imageUrl, required this.price, required this.description, required this.rating, required this.count});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,7 @@ class ProductDetails extends StatelessWidget {
         child: Column(
           children: [
             /// 1.-Product Image Slider
-            const ProductImageSlider(),
+             ProductImageSlider(imageUrl: imageUrl),
 
             /// 2.-Product Details
             Padding(
@@ -42,13 +48,13 @@ class ProductDetails extends StatelessWidget {
               child: Column(
                 children: [
                   /// --Rating & Share
-                  const RatingShare(),
+                   RatingShare(rating: rating, count: count,),
 
                   /// --Price , title , Stock and Brand
-                  const ProductMetaData(),
+                   ProductMetaData(price: price,),
 
                   /// --Attributes
-                  const ProductAttributes(),
+                  ProductAttributes(price: price, description: description,),
                   const SizedBox(
                     height: TSizes.spaceBtmSections,
                   ),
@@ -72,16 +78,16 @@ class ProductDetails extends StatelessWidget {
                   const SizedBox(
                     height: TSizes.spaceBtwItems,
                   ),
-                  const ReadMoreText(
-                    'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy.',
+                   ReadMoreText(
+                    description,
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Show more',
                     trimExpandedText: 'less',
                     moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                     lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                   ),
 
                   /// --Reviews
@@ -93,7 +99,7 @@ class ProductDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                     SectionHeading(
-                    title: 'Reviews(199)',
+                    title: 'Reviews(${price ~/ 2})',
                     onPressed: () {},
                       showActionButton: false,
                   ),

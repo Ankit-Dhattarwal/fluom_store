@@ -13,7 +13,8 @@ import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class ProductMetaData extends StatelessWidget {
-  const ProductMetaData({super.key});
+  final double price;
+  const ProductMetaData({super.key, required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +30,13 @@ class ProductMetaData extends StatelessWidget {
               radius: TSizes.sm,
               backgroundColor: TColors.secondary.withOpacity(0.8),
               padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
-              child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
+              child: Text((price - price /3).toInt().toString() + ' %', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
               ),
             ),
             const SizedBox(width: TSizes.spaceBtwItems,),
 
             /// Prices
-            Text('\$255', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
+            Text(price.toString(), style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
             const SizedBox(width: TSizes.spaceBtwItems,),
            /// Herer use the api prices
            // const ProductPriceText(price: '175', isLarge: true,),
