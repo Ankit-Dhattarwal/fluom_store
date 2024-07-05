@@ -35,6 +35,11 @@ Users are required to verify their email addresses upon registration. This ensur
 
 In case users forget their passwords, a password reset feature is provided. Users can initiate a password reset process, and instructions will be sent to their registered email addresses.
 
+## Stripe Payment Gateway 💳
+
+This project integrates Stripe for handling payments. Users can securely process payments within the app using Stripe's payment gateway. The implementation covers creating a payment intent, initializing the payment sheet, and presenting the payment sheet for the user to complete the transaction.
+
+
 ## Screenshots 📸
 
 Here are some screenshots of the Fluom app:
