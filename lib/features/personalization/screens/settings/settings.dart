@@ -6,6 +6,7 @@ import 'package:fluom/features/authenticaion/screens/login/login.dart';
 import 'package:fluom/features/personalization/screens/address/address.dart';
 import 'package:fluom/features/personalization/screens/order/order.dart';
 import 'package:fluom/features/personalization/screens/profile/profile.dart';
+import 'package:fluom/features/personalization/screens/settings/upload_data/upload_data.dart';
 import 'package:fluom/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -112,10 +113,15 @@ class SettingScreen extends StatelessWidget {
                   const SizedBox(
                     height: TSizes.spaceBtwItems,
                   ),
-                  const SettingsMenuTile(
-                      icon: Iconsax.document_upload,
-                      title: 'Load Data',
-                      subTitle: 'Upload Data to your Cloud Firebase'),
+                  InkWell(
+                    onTap: (){
+                      Get.to( ()=> UploadData());
+                    },
+                    child: const SettingsMenuTile(
+                        icon: Iconsax.document_upload,
+                        title: 'Load Data',
+                        subTitle: 'Upload Data to your Cloud Firebase'),
+                  ),
                   SettingsMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',
