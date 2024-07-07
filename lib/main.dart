@@ -27,14 +27,10 @@ Future<void> main() async {
   /// GetX Local Storage
    await GetStorage.init();
 
-  // Todo : Await Native Splash
 FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  // Todo : Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then(
           (FirebaseApp value) => Get.put(AuthenticationRepository()));
-  // Todo : Initialize Authentication
-
   runApp(const App());
 }
 

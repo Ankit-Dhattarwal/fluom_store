@@ -3,11 +3,8 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fluom/data/services/database.dart';
 import 'package:fluom/utils/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UploadData extends StatefulWidget {
@@ -20,7 +17,9 @@ class UploadData extends StatefulWidget {
 class _UploadDataState extends State<UploadData> {
   final ImagePicker _picker = ImagePicker();
   File? selectedImage;
-  TextEditingController nameController = new TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController desController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
 
   bool uploading = false;
 
@@ -49,13 +48,19 @@ Future uploadItem() async{
     Map<String, dynamic> addProduct = {
       "name": nameController.text,
       "Image": downloadUrl,
+      "Price": priceController.text,
+      "Details": desController.text,
     };
 
     await DatabaseMethods().addProduct(addProduct, selectedCategory!).then((value) {
-      uploading = false;
-      selectedImage = null;
-      nameController.text = "";
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      setState(() {
+        uploading = false;
+        selectedImage = null;
+        nameController.text = "";
+        priceController.text = "";
+        desController.text = "";
+      });
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: Colors.greenAccent,
           content: Text("Product Successfully Uploaded." ,
             style: TextStyle(fontSize: 20),))
@@ -76,17 +81,17 @@ Future uploadItem() async{
           onTap: (){
             Get.back();
           },
-            child: Icon(Icons.arrow_back_ios_new_outlined)),
-        title: Text("Add Product",),
+            child: const Icon(Icons.arrow_back_ios_new_outlined)),
+        title: const Text("Add Product",),
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(left: 20.0,top: 20.0),
+          margin: const EdgeInsets.only(left: 20.0,top: 20.0, bottom: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Upload the product image", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
-              SizedBox(height: 10,),
+              const Text("Upload the product image", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
+              const SizedBox(height: 10,),
              selectedImage==null ? GestureDetector(
                 onTap: (){
                   getImage();
@@ -98,7 +103,7 @@ Future uploadItem() async{
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 1.5),borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(Icons.camera_alt_outlined),
+                    child: const Icon(Icons.camera_alt_outlined),
                   ),
                 ),
               )
@@ -118,19 +123,21 @@ Future uploadItem() async{
                  ),
                ),
              ),
-              SizedBox(height: 10,),
-              Text("Product Name", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
+              const Text("Product Name", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
+              const SizedBox(height: 10,),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 width: MediaQuery.of(context).size.width / 1.11,
                 decoration: BoxDecoration(
-                  color: Color(0xFFececf8),
+                  color: const Color(0xFFececf8),
                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextField(
                   controller: nameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
+                    // hintText: 'Product Name',
+                    // hintStyle: TextStyle(color: Colors.grey),
                     border: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -139,14 +146,63 @@ Future uploadItem() async{
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
-              Text("Product Brand", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
-              SizedBox(height: 10,),
+              const SizedBox(height: 20,),
+              const Text("Product Price", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
+              const SizedBox(height: 10,),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 width: MediaQuery.of(context).size.width / 1.11,
                 decoration: BoxDecoration(
-                  color: Color(0xFFececf8),
+                  color: const Color(0xFFececf8),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextField(
+                  controller: priceController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    // hintText: 'Product Price',
+                    // hintStyle: TextStyle(color: Colors.grey),
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20,),
+              const Text("Product Description", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
+              const SizedBox(height: 10,),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                width: MediaQuery.of(context).size.width / 1.11,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFececf8),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextField(
+                  maxLines: 4,
+                  maxLength: 200,
+                  controller: desController,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter description',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20,),
+              const Text("Product Brand", style: TextStyle(fontWeight: FontWeight.w800, color: Colors.grey, fontSize: TSizes.fontSizeLg),),
+              const SizedBox(height: 10,),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                width: MediaQuery.of(context).size.width / 1.11,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFececf8),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: DropdownButtonHideUnderline(
@@ -168,16 +224,16 @@ Future uploadItem() async{
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Center(
                 child: uploading
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : ElevatedButton(
                   onPressed: () {
                     uploadItem();
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

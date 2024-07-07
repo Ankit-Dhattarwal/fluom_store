@@ -49,9 +49,9 @@ class CategoriesTab extends StatelessWidget {
                   onPressed: () {},),
                 const SizedBox(height: TSizes.spaceBtwItems,),
 
-                GridLayout(itemCount: 4,
-                    itemBuilder: (_, index) =>
-                        ProductCardVertical(index: index,)),
+                // GridLayout(itemCount: 4,
+                //     itemBuilder: (_, index) =>
+                //         ProductCardVertical(index: index,)),
                 const SizedBox(height: TSizes.spaceBtmSections,),
 
               ],

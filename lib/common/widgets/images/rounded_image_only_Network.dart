@@ -12,7 +12,7 @@ class RounderImageNetwork extends StatelessWidget {
     this.applyImageRadius = true,
     this.border,
     this.backgroundColor = TColors.light,
-    this.fit = BoxFit.contain,
+    this.fit = BoxFit.cover,
     this.padding,
     this.isNetworkImage = false,
     this.onPressed,
@@ -50,6 +50,8 @@ class RounderImageNetwork extends StatelessWidget {
           child:Image.network(
             imageUrl,
             fit: fit,
+            width: width,
+            height: height,
           ),
         ),
       ),
