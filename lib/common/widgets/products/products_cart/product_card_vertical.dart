@@ -10,6 +10,7 @@ import 'package:fluom/features/personalization/screens/product_details/product_d
 import 'package:fluom/utils/constants/colors.dart';
 import 'package:fluom/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:intl/intl.dart';
 
 import '../../../styles/shadows.dart';
 import '../../Icons/circular_icons.dart';
@@ -37,6 +38,9 @@ class ProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = false; // Replace with your dark mode logic if needed
 
+    String formattedPrice = NumberFormat.decimalPattern().format(double.tryParse(productPrice) ?? 0.0);
+
+
     return GestureDetector(
       onTap: () => Get.to(() => ProductDetails(
         imageUrl: productImage,
@@ -59,8 +63,8 @@ class ProductCardVertical extends StatelessWidget {
             children: [
               RoundedContainer(
                 width: double.infinity,
-                height: 180,
-                padding: const EdgeInsets.all(TSizes.sm),
+                height: 150,
+                // padding: const EdgeInsets.all(5),
                 backgroundColor: dark ? TColors.dark : TColors.light,
                 child: Stack(
                   children: [
@@ -117,13 +121,14 @@ class ProductCardVertical extends StatelessWidget {
                 ),
               ),
               const Spacer(),
+             // SizedBox(height: 5,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: TSizes.sm),
                     child: ProductPriceText(
-                      price: double.tryParse(productPrice) ?? 0.0,
+                      price: formattedPrice,
                     ),
                   ),
                   Container(

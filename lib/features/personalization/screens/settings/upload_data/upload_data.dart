@@ -71,7 +71,7 @@ Future uploadItem() async{
 
   String? selectedCategory;
   final List<String> categoryItems = [
-    'Nike','Adidas', 'H&M', 'Zara', 'Puma','Converse','Tiffany & Co', 'Cartier', 'Nykaa', 'Mamaearth'
+    'Nike','Adidas', 'H&M', 'Zara', 'Puma','Converse','Tiffany & Co', 'Cartier', 'Nykaa', 'Mamaearth', 'Banner', 'HomeVerticalIcon'
   ];
   @override
   Widget build(BuildContext context) {

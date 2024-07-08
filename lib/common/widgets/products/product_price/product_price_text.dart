@@ -11,7 +11,7 @@ class ProductPriceText extends StatelessWidget {
   });
 
   final String currencySign;
-  final double price;
+  final String price;
   final int maxLines;
   final bool isLarge;
   final bool lineThrough;
