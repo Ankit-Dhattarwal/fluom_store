@@ -8,6 +8,7 @@ import '../../../../../common/widgets/custom_shape/containers/primary_header_con
 import '../../../../../common/widgets/custom_shape/containers/search_container.dart';
 import '../../../../../common/widgets/texts/section_heading.dart';
 import '../../../../../data/repositories/categories/category_controller.dart';
+import '../../../controllers/home_controllers.dart';
 import 'home_appbar/home_appbar.dart';
 import 'home_categories.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -17,8 +18,10 @@ import '../../../../../features/personalization/screens/all_products/all_product
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  var categoryController = Get.put(CategoryController());
-  ScrollController _scrollController = ScrollController();
+  final homeController = Get.put(HomeController());
+  final ScrollController _scrollController = ScrollController();
+
+  // var categoryController = Get.put(CategoryController());
   int perPageLimit = 2;
 
   @override
@@ -32,16 +35,16 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // AppBar
-                  THomeSecAppBar(),
-                  SizedBox(height: TSizes.spaceBtmSections),
+                  const THomeSecAppBar(),
+                  const SizedBox(height: TSizes.spaceBtmSections),
 
                   // SearchBar
-                  SearchContainer(text: 'Search in Store'),
-                  SizedBox(height: TSizes.spaceBtmSections),
+                  const SearchContainer(text: 'Search in Store'),
+                  const SizedBox(height: TSizes.spaceBtmSections),
 
                   // Categories Heading
                   Padding(
-                    padding: EdgeInsets.only(left: TSizes.defaultSpace),
+                    padding: const EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
                       children: [
                         const SectionHeading(
@@ -49,33 +52,23 @@ class HomeScreen extends StatelessWidget {
                           showActionButton: false,
                           textColor: Colors.white,
                         ),
-                        SizedBox(height: TSizes.spaceBtwItems),
+                        const SizedBox(height: TSizes.spaceBtwItems),
 
                         // Categories
-                        FutureBuilder<List<DocumentSnapshot>>(
-                          future: fetchHomeVerticalIconProducts(),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState == ConnectionState.waiting ||
-                                snapshot.connectionState == ConnectionState.none) {
-                            }
-
-                            if (snapshot.hasError) {
-                              return Text('Error: ${snapshot.error}');
-                            }
-
-                            if (snapshot.hasData && snapshot.data != null) {
-                              List<DocumentSnapshot> homeVerticalIconProducts = snapshot.data!;
-
-                              return HomeCategories(categories: homeVerticalIconProducts);
-                            } else {
-                              return Text('No data found');
-                            }
-                          },
-                        ),
+                        Obx(() {
+                          if (homeController.isLoading.value) {
+                            return _buildShimmerEffectHome(context);
+                          }
+                          if (homeController.homeVerticalIconProducts.isEmpty) {
+                            return Text('No data found');
+                          }
+                          return HomeCategories(categories: homeController
+                              .homeVerticalIconProducts);
+                        }),
                       ],
                     ),
                   ),
-                  SizedBox(height: TSizes.spaceBtmSections),
+                  const SizedBox(height: TSizes.spaceBtmSections),
                 ],
               ),
             ),
@@ -88,99 +81,64 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   // Promo Slider and other widgets ...
                   Obx(() {
-                    if (categoryController.isLoading.value) {
+                    if (homeController.isLoading.value) {
                       return _buildShimmerEffect(context);
                     }
+                    if (homeController.products.isEmpty) {
+                      return Center(child: Text('No products found'));
+                    }
 
-                    return StreamBuilder<QuerySnapshot>(
-                      stream: FirebaseFirestore.instance.collectionGroup('Items').snapshots(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting ||
-                            snapshot.connectionState == ConnectionState.none) {
-                           return _buildShimmerEffect(context);
-                        }
+                    return Column(
+                      children: [
+                        if (homeController.bannerProducts.isNotEmpty)
+                          PromoSlider(
+                            banners: homeController.bannerProducts
+                                .map((product) => product['Image'] as String)
+                                .toList(),
+                          ),
+                        SizedBox(height: TSizes.spaceBtmSections),
+                        // Heading
+                        SectionHeading(
+                          title: 'Popular Products',
+                          onPressed: () => Get.to(() => const AllProducts()),
+                        ),
 
-                        if (snapshot.hasError) {
-                          return Center(child: Text('Something went wrong'));
-                        }
-
-                        if (snapshot.hasData && snapshot.data != null) {
-                          final List<DocumentSnapshot> products = snapshot.data!.docs;
-
-                          if (products.isEmpty) {
-                            return Center(child: Text('No products found'));
-                          }
-
-                          // Separate lists for 'Banner' and 'HomeVerticalIcon' categories
-                          List<DocumentSnapshot> bannerProducts = [];
-                          List<DocumentSnapshot> homeVerticalIconProducts = [];
-                          Map<String, List<DocumentSnapshot>> categoryMap = {};
-
-                          products.forEach((product) {
-                            String categoryId = product.id.split('-').first;
-                            if (categoryId == 'Banner') {
-                              bannerProducts.add(product);
-                            } else if (categoryId == 'HomeVerticalIcon') {
-                              homeVerticalIconProducts.add(product);
-                            } else {
-                              categoryMap.putIfAbsent(categoryId, () => []).add(product);
-                            }
-                          });
-
-                          List<DocumentSnapshot> filteredProducts = [];
-                          categoryMap.forEach((key, value) {
-                            filteredProducts.addAll(value.take(perPageLimit));
-                          });
-
-                          return Column(
-                            children: [
-                              // Promo Slider
-                              if (bannerProducts.isNotEmpty)
-                                PromoSlider(
-                                  banners: bannerProducts
-                                      .map((product) => product['Image'] as String)
-                                      .toList(),
-                                ),
-                              SizedBox(height: TSizes.spaceBtmSections),
-
-                              // Heading
-                              SectionHeading(
-                                title: 'Popular Products',
-                                onPressed: () => Get.to(() => const AllProducts()),
-                              ),
-
-                              // Popular Products Grid
-                              GridView.builder(
-                                controller: _scrollController,
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 10.0,
-                                  mainAxisSpacing: 10.0,
-                                  childAspectRatio: MediaQuery.of(context).size.width / 600,
-                                ),
-                                itemCount: filteredProducts.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  final product = filteredProducts[index].data() as Map<String, dynamic>;
-                                  final productId = filteredProducts[index].id;
-                                  final categoryName = productId.split('-').first;
-                                  return ProductCardVertical(
-                                    productName: product['name'],
-                                    productImage: product['Image'],
-                                    productPrice: product['Price'],
-                                    productDetails: product['Details'],
-                                    productId: categoryName,
-                                    index: index,
-                                  );
-                                },
-                              ),
-                            ],
-                          );
-                        } else {
-                          return Center(child: Text('No products found'));
-                        }
-                      },
+                        // Popular Products Grid
+                        GridView.builder(
+                          controller: _scrollController,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            childAspectRatio: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 600,
+                          ),
+                          itemCount: homeController.filteredProducts.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final product = homeController
+                                .filteredProducts[index].data() as Map<
+                                String,
+                                dynamic>;
+                            final productId = homeController
+                                .filteredProducts[index].id;
+                            final categoryName = productId
+                                .split('-')
+                                .first;
+                            return ProductCardVertical(
+                              productName: product['name'],
+                              productImage: product['Image'],
+                              productPrice: product['Price'],
+                              productDetails: product['Details'],
+                              productId: categoryName,
+                              index: index,
+                            );
+                          },
+                        ),
+                      ],
                     );
                   }),
                 ],
@@ -203,8 +161,14 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildShimmerItem(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
+    final screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
@@ -254,18 +218,57 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Future<List<DocumentSnapshot>> fetchHomeVerticalIconProducts() async {
-    QuerySnapshot snapshot = await FirebaseFirestore.instance.collectionGroup('Items').get();
-    List<DocumentSnapshot> products = snapshot.docs;
+  Widget _buildShimmerEffectHome(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Column(
+        children: List.generate(1, (index) => _buildShimmerItemHome(context)),
+      ),
+    );
+  }
 
-    List<DocumentSnapshot> homeVerticalIconProducts = [];
-    products.forEach((product) {
-      String categoryId = product.id.split('-').first;
-      if (categoryId == 'HomeVerticalIcon') {
-        homeVerticalIconProducts.add(product);
-      }
-    });
-
-    return homeVerticalIconProducts;
+  Widget _buildShimmerItemHome(BuildContext context) {
+    final screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
+    final screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0, top: 10.0, right: 10.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(4, (index) {
+              return Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    width: screenWidth * 0.2,
+                    height: screenHeight * 0.09,
+                  ),
+                  const SizedBox(height: 10.0),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    width: screenWidth * 0.2,
+                    height: screenHeight * 0.01,
+                  ),
+                ],
+              );
+            }),
+          ),
+        ],
+      ),
+    );
   }
 }
