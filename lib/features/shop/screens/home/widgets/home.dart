@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                     }
 
                     return StreamBuilder(
-                      stream: FirebaseFirestore.instance.collectionGroup('Products').snapshots(),
+                      stream: FirebaseFirestore.instance.collectionGroup('Items').snapshots(),
                       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                         if (snapshot.connectionState == ConnectionState.waiting) {
                           return const Center(child: CircularProgressIndicator());
@@ -134,12 +134,13 @@ class HomeScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             final product = products[index].data() as Map<String, dynamic>;
                             final productId = products[index].id;
+                            final categoryName = productId.split('-').first;
                             return ProductCardVertical(
                               productName: product['name'],
                               productImage: product['Image'],
                               productPrice: product['Price'],
                               productDetails: product['Details'],
-                              productId: productId,
+                              productId: categoryName,
                               index: index,
                             );
                           },
