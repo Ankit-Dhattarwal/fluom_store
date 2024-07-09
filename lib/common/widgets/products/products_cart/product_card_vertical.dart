@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,6 +40,11 @@ class ProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = false; // Replace with your dark mode logic if needed
 
+    final random = Random();
+    final discountPercentage = random.nextInt(20) + 5;
+
+    final discountedPrice = double.tryParse(productPrice) ?? 0.0 * (1 - (discountPercentage / 100));
+    final formattedDiscountedPrice = NumberFormat.currency(locale: 'en_US', symbol: '\$').format(discountedPrice);
     String formattedPrice = NumberFormat.decimalPattern().format(double.tryParse(productPrice) ?? 0.0);
 
 
@@ -81,7 +88,7 @@ class ProductCardVertical extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: TSizes.sm, vertical: TSizes.xs),
                         child: Text(
-                          '20%',
+                          '$discountPercentage%',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!

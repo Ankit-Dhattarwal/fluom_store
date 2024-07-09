@@ -9,8 +9,8 @@ class AllProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: HomeAppBar(
+    return  Scaffold(
+      appBar: const HomeAppBar(
         title: Text('Popular Products'),
         showBackArrow: true,
       ),

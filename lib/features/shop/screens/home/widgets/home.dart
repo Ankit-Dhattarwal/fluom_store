@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluom/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,9 +18,9 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   final homeController = Get.put(HomeController());
+  var categoryController = Get.put(CategoryController());
   final ScrollController _scrollController = ScrollController();
 
-  // var categoryController = Get.put(CategoryController());
   int perPageLimit = 2;
 
   @override
@@ -60,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                             return _buildShimmerEffectHome(context);
                           }
                           if (homeController.homeVerticalIconProducts.isEmpty) {
-                            return Text('No data found');
+                            return const Text('No data found');
                           }
                           return HomeCategories(categories: homeController
                               .homeVerticalIconProducts);
@@ -85,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                       return _buildShimmerEffect(context);
                     }
                     if (homeController.products.isEmpty) {
-                      return Center(child: Text('No products found'));
+                      return const Center(child: Text('No products found'));
                     }
 
                     return Column(
