@@ -11,17 +11,23 @@ class SortableProducts extends StatelessWidget {
   final homeController = Get.put(HomeController());
   final RxString selectedSortOption = 'None'.obs;
 
+  // Track the which call hit the backend same or not
+  String? lastSelectedOption;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         /// Dropdown
         DropdownButtonFormField(
-          value: 'None',
+          value: selectedSortOption.value,
           decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
           onChanged: (value) {
             selectedSortOption.value = value!;
-            homeController.updateSortedProductList(value);
+            if (value != lastSelectedOption) {
+              lastSelectedOption = value;
+              homeController.updateSortedProductList(value);
+            }
           },
           items: [
             'None',
@@ -39,12 +45,14 @@ class SortableProducts extends StatelessWidget {
         /// Products
         Obx(() {
           if (homeController.isLoading.value) {
-            return CircularProgressIndicator();
+            return const Center(
+                child:  CircularProgressIndicator()
+            );
           } else {
             List<DocumentSnapshot> productsToShow = homeController.sortedProducts;
             return GridView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics:  const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10.0,

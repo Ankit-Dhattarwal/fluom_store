@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                                 .map((product) => product['Image'] as String)
                                 .toList(),
                           ),
-                        SizedBox(height: TSizes.spaceBtmSections),
+                        const SizedBox(height: TSizes.spaceBtmSections),
                         // Heading
                         SectionHeading(
                           title: 'Popular Products',

@@ -6,18 +6,21 @@ class HomeController extends GetxController {
 
   final carousalCurrentIndex = 0.obs;
   var isLoading = true.obs;
-  var homeVerticalIconProducts = <DocumentSnapshot>[].obs;
-  var products = <DocumentSnapshot>[].obs;
-  var bannerProducts = <DocumentSnapshot>[].obs;
-  var filteredProducts = <DocumentSnapshot>[].obs;
-  var sortedProducts = <DocumentSnapshot>[].obs;
+  var isDataFetched = false.obs;
+  var homeVerticalIconProducts = RxList<DocumentSnapshot>([]);
+  var products = RxList<DocumentSnapshot>([]);
+  var bannerProducts = RxList<DocumentSnapshot>([]);
+  var filteredProducts = RxList<DocumentSnapshot>([]);
+  var sortedProducts = RxList<DocumentSnapshot>([]);
   var showAllProducts = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchHomeVerticalIconProducts();
-    fetchProducts();
+    if (!isDataFetched.value) {
+      fetchHomeVerticalIconProducts();
+      fetchProducts();
+    }
   }
 
   void updatePageIndicator(index) {
@@ -26,10 +29,14 @@ class HomeController extends GetxController {
 
   Future<void> fetchHomeVerticalIconProducts() async {
     try {
+      isLoading.value = true;
       QuerySnapshot snapshot = await FirebaseFirestore.instance.collectionGroup('Items').get();
       homeVerticalIconProducts.value = snapshot.docs.where((doc) => doc.id.split('-').first == 'HomeVerticalIcon').toList();
+      isDataFetched.value = true;
     } catch (e) {
       print("Error fetching HomeVerticalIcon products: $e");
+    } finally {
+      isLoading.value = false;
     }
   }
 
@@ -51,8 +58,10 @@ class HomeController extends GetxController {
         }
       }
 
-      bannerProducts.value = bannerProductsList;
+      bannerProducts.assignAll(bannerProductsList);
       updateSortedProductList('None');
+
+      isDataFetched.value = true;
 
     } catch (e) {
       print("Error fetching products: $e");
@@ -92,8 +101,8 @@ class HomeController extends GetxController {
       }
     }
 
-    filteredProducts.value = tempProducts;
-    sortedProducts.value = filteredProducts;
+    filteredProducts.assignAll(tempProducts);
+    sortedProducts.assignAll(filteredProducts);
   }
 
   num parsePrice(dynamic price) {

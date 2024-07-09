@@ -45,7 +45,10 @@ class RounderImageNetwork extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: applyImageRadius
-              ? BorderRadius.circular(borderRadius)
+              ? BorderRadius.only(
+            topLeft: Radius.circular(borderRadius),
+            topRight: Radius.circular(borderRadius),
+          )
               : BorderRadius.zero,
           child:Image.network(
             imageUrl,
