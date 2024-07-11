@@ -63,5 +63,8 @@ To handle data fetching in GetX, you need to create a controller that will manag
 Here are some screenshots of the Fluom app:
 
 - ![Fetch Data] <img width="1372" alt="Screenshot 2024-02-07 at 2 39 54 AM" src="https://github.com/Ankit-Dhattarwal/fluom_store/assets/109728587/9cbd01ee-e925-4f31-bdf4-b48ebf4313a5">
+- [ Home screen ]
+<img width="1440" alt="Screenshot 2024-07-11 at 11 04 11 PM" src="https://github.com/Ankit-Dhattarwal/SnakeGameDesktop/assets/109728587/c9822742-0aeb-4893-85ad-f3cf48d86f96">
+<img width="1440" alt="Screenshot 2024-07-11 at 11 04 18 PM" src="https://github.com/Ankit-Dhattarwal/SnakeGameDesktop/assets/109728587/4f121a40-72cd-46e3-8a71-ce728830c49c">
 
 For more information on GetX and shared preferences, refer to the [online documentation](https://docs.getx.dev/) and [shared_preferences package](https://pub.dev/packages/shared_preferences), respectively.
